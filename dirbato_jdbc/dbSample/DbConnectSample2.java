@@ -70,6 +70,33 @@ public class DbConnectSample01 {
                 } catch (SQLException e) {
                     System.err.println("データベース切断時にエラーが発生しました。");
                     e.printStackTrace();
+                 // 6. 結果を表示する
+                    while (rs.next()) {
+                        // Name列の値を取得
+                        String name = rs.getString("Name");
+                        // Population列の値を取得  ← 追記
+                        int population = rs.getInt("Population"); // ← 追記
+
+                        // 取得した値を表示
+                        System.out.println(name);
+                        System.out.println(population); // ← 追記
+                     // 6. 結果を表示する
+                        while (rs.next()) {
+                            // ループ内は、省略
+                        }
+
+                        // 6-1. データの更新を行う
+                        sql = "update country set Population = 105000 where Code = 'ABW'";
+                        int count = stmt.executeUpdate(sql);
+                        System.out.println(count);
+
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                            SELECT * FROM country WHERE Code = 'ABW';
+                            
+                        }
+
+                    }
                 }
             }
         }
